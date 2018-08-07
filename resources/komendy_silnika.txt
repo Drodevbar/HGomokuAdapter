@@ -1,0 +1,81 @@
+Komendy wejścia (wpisywane przez komunikującego się z silnikiem, | oznacza lub, a kursywa oznacza opcjonalność)
+
+newgame [white|black] [ai|human] [white|black] [ai|human]
+    rozpoczyna nową grę (wywołuje m.in. StartGame)
+
+    przykłady:
+        newgame
+        newgame white ai black ai
+        newgame white human black human
+        newgame black human white ai 
+
+    odpowiedź:
+        game started
+
+printboard
+    wypisuje planszę, używając notacji X dla pionów gracza czarnego i O dla gracza białego, użyteczne w celach debugowania
+
+getmoves
+    zwraca wszystkie dostępne (wolne i poprawne) ruchy
+
+    odpowiedź:
+        moves: (x1 y1) (x2 y2) (x3 y3) (x4 y4)…
+    przykładowa odpowiedź:
+        moves: (1 1) (2 1) (3 1) (4 1) (1 2) (2 2) (3 2) (4 2) (1 3) (2 3) (3 3) (4 3) (1 4) (2 4) (3 4) (4 4)
+
+getplayer
+    zwraca kolor gracza, do którego należy ten ruch
+    
+    odpowiedź: black|white
+
+movesleft
+    zwraca ilość ruchów, które zostały do wykonania przez obecnego gracza
+
+    przykładowa odpowiedź: 1
+
+    odpowiedź nigdy nie będzie większa od max(p,q)
+
+movesmade
+    zwraca ilość ruchów wykonanych od początku rozgrywki
+
+    przykładowa odpowiedź: 0
+
+    wartość nigdy nie będzie większa niż m∙n  
+
+perf
+    zwraca informacje o metrykach wydajnościowych silnika
+    
+    należy wywoływać po kilku, a najlepiej kilkunastu lub kilkudziesięciu (im więcej tym lepiej) rozgrywkach, aby dane miały mniejszy błąd pomiarowy
+    wypisuje średni czas wygenerowania ruchu przez AI, średni czas sprawdzenia warunku wygranej i średni czas wygenerowania listy dostępnych (wolnych) ruchów
+
+    przykładowa odpowiedź:
+        average AIPlayer::GetMove() execution is 10620.1 ns
+        average Game::CheckWin() execution is 1237.43 ns
+        average Game::GetMoves() execution is 3384.86 ns  
+
+isready
+    używana do sprawdzenia, czy silnik odpowiada
+
+    odpowiedź: readyok
+
+info
+    wyświetla informacje o parametrach silnika
+
+    odpowiedź:
+        engine info: (m,n,k,p,q) K_OR_MORE_TO_WIN|EXACTLY_K_TO_WIN
+
+    przykładowa odpowiedź:
+        engine info: (4,4,3,1,1)K_OR_MORE_TO_WIN
+    
+    wywołuje metodę engine_info z parametrem true
+
+makemove x y
+    obecny gracz wykonuje ruch w pole o współrzędnych x,y, czyli pole x,y zmienia kolor na kolor gracza
+
+    wykona się poprawnie tylko wtedy, gdy jest tura gracza i ruch jest poprawny, w innym wypadku odpowiedź z silnika będzie informowała o tym, że ruch był niepoprawny
+
+    przykładowe wywołanie:
+        makemove 2 3
+    przykładowe odpowiedzi:
+        poprawny ruch: move black 2 3
+        nieporawny ruch: invalid move
