@@ -3,7 +3,7 @@ package adapter.translator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class TrokaTranslator implements Translatable {
+public class TrokaTranslator implements Translator {
 
     private static final String EOL = "\n";
     private static final int CODE_MIN_LETTER_ASCII = 97;

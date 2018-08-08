@@ -1,6 +1,6 @@
 package adapter.translator;
 
-public interface Translatable {
+public interface Translator {
     
     public String startGame();
     

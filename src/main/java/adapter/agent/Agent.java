@@ -1,6 +1,5 @@
 package adapter.agent;
 
-import adapter.translator.Translatable;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.Closeable;
@@ -8,20 +7,21 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
+import adapter.translator.Translator;
 
 abstract public class Agent implements Closeable {
 
-    private final Translatable translator;
+    private final Translator translator;
     private final Process process;
     private final BufferedWriter toProcess;
     private final BufferedReader fromProcess;
     private final Scanner scanner;
     
-    public static Agent build(Translatable translator) throws IOException {
+    public static Agent build(Translator translator) throws IOException {
         return AgentParams.isStarting() ? new StartingAgent(translator) : new FollowingAgent(translator);
     }
 
-    Agent(Translatable translator) throws IOException {
+    Agent(Translator translator) throws IOException {
         this.translator = translator;
         process = buildProcessByCmd(AgentParams.getCommand());
         toProcess = new BufferedWriter(new OutputStreamWriter(process.getOutputStream()));
