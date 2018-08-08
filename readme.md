@@ -1,1 +1,1 @@
-### HGomokuAgent <-> TrokaAgent
+### HGomokuAgent

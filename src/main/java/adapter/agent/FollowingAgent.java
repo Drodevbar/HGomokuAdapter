@@ -1,11 +1,12 @@
 package adapter.agent;
 
+import adapter.translator.Translatable;
 import java.io.IOException;
 
 public class FollowingAgent extends Agent {
 
-    public FollowingAgent() throws IOException {
-        super();
+    public FollowingAgent(Translatable translator) throws IOException {
+        super(translator);
     }
     
     @Override

@@ -1,9 +1,13 @@
 package adapter.agent;
 
+import java.util.Arrays;
+
 public class AgentParams {
 
-    private static final String DEFAULT_COMMAND = "wine resources/engine.exe";
-
+    private static String translator;
+    private static int boardWidth;
+    private static int boardHeight;
+    private static int kToWin;
     private static int turnPower;
     private static int firstTurnPower;
     private static boolean starting;
@@ -11,10 +15,30 @@ public class AgentParams {
     
     public static void load(String[] args) {
         validateArgsLength(args.length);
-        turnPower = Integer.parseInt(args[0]);
-        firstTurnPower = Integer.parseInt(args[1]);
-        starting = convertToBoolean(args[2]);
-        command = (args.length > 3) ? args[3] : DEFAULT_COMMAND;
+        translator = args[0];
+        boardWidth = Integer.parseInt(args[1]);
+        boardHeight = Integer.parseInt(args[2]);
+        kToWin = Integer.parseInt(args[3]);
+        turnPower = Integer.parseInt(args[4]);
+        firstTurnPower = Integer.parseInt(args[5]);
+        starting = convertToBoolean(args[6]);
+        command = buildCommand(Arrays.copyOfRange(args, 7, args.length));
+    }
+    
+    public static String getTranslator() {
+        return translator;
+    }
+    
+    public static int getBoardWidth() {
+        return boardWidth;
+    }
+    
+    public static int getBoardHeight() {
+        return boardHeight;
+    }
+    
+    public static int getKToWin() {
+        return kToWin;
     }
     
     public static int getTurnPower() {
@@ -33,16 +57,24 @@ public class AgentParams {
         return command;
     }
     
+    private static String buildCommand(String[] args) {
+        StringBuilder commandBuilder = new StringBuilder();
+        for (String arg : args) {
+            commandBuilder.append(arg).append(" ");
+        }
+        
+        return commandBuilder.toString();
+    }
+    
     private static boolean convertToBoolean(String value) {
         return "1".equalsIgnoreCase(value)
                 || "yes".equalsIgnoreCase(value)
                 || "true".equalsIgnoreCase(value)
                 || "first".equalsIgnoreCase(value);
-    }
-    
+    } 
     
     private static void validateArgsLength(int length) {
-        if (length < 3) {
+        if (length < 8) {
             throw new RuntimeException("Please provide required parameters.");
         }
     }
