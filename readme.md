@@ -1,1 +1,1 @@
-### HGomokuAgent
+### HGomokuAdapter
