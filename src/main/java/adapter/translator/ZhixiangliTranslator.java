@@ -34,10 +34,10 @@ public class ZhixiangliTranslator implements Translator {
 
     @Override
     public String translateMoveFromHGomoku(String lastMove) {
-        int row = (lastMove.substring(0, 1)).codePointAt(0) - CODE_MIN_LETTER_ASCII;
-        int column = boardHeight - Integer.parseInt(lastMove.substring(1));
+        int column = (lastMove.substring(0, 1)).codePointAt(0) - CODE_MIN_LETTER_ASCII;
+        int row = boardHeight - Integer.parseInt(lastMove.substring(1));
 
-        addMoveToBuffer(column, row, getOppositeSideShortcut());
+        addMoveToBuffer(row, column, getOppositeSideShortcut());
 
         return String.format(
                 "{\"command\":\"%s\",\"rows\":%d,\"columns\":%d,\"chessboard\":\"%s\"}" + EOL,
@@ -66,12 +66,12 @@ public class ZhixiangliTranslator implements Translator {
         return line.contains("rowIndex") && line.contains("columnIndex");
     }
 
-    private void addMoveToBuffer(int x, int y, String sideShortcut) {
-        String xHex = Integer.toHexString(x);
-        String yHex = Integer.toHexString(y);
+    private void addMoveToBuffer(int row, int col, String sideShortcut) {
+        String rowHex = Integer.toHexString(row);
+        String colHex = Integer.toHexString(col);
 
         movesBuffer.append(
-                String.format("%s[%s%s];", sideShortcut, xHex, yHex)
+                String.format("%s[%s%s];", sideShortcut, rowHex, colHex)
         );
     }
 
