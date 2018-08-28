@@ -15,7 +15,7 @@ public class ZhixiangliTranslator implements Translator {
     private final int boardHeight;
     private final StringBuffer movesBuffer = new StringBuffer();
 
-    public ZhixiangliTranslator(boolean starting, int boardWidth, int boardHeight) {
+    ZhixiangliTranslator(boolean starting, int boardWidth, int boardHeight) {
         side = starting ? "NEXT_BLACK" : "NEXT_WHITE";
         sideShortcut = starting ? "B" : "W";
         this.boardWidth = boardWidth;
@@ -76,8 +76,6 @@ public class ZhixiangliTranslator implements Translator {
     }
 
     private String getOppositeSideShortcut() {
-        return sideShortcut.equals("B")
-                ? "W"
-                : "B";
+        return sideShortcut.equals("B") ? "W" : "B";
     }
 }

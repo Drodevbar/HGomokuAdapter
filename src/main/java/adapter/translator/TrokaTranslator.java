@@ -12,7 +12,7 @@ public class TrokaTranslator implements Translator {
     private final String side;
     private final int boardHeight;
 
-    public TrokaTranslator(boolean starting, int boardHeight) {
+    TrokaTranslator(boolean starting, int boardHeight) {
         this.side = starting ? "black" : "white";
         this.boardHeight = boardHeight;
     }

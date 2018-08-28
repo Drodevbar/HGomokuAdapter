@@ -2,13 +2,13 @@ package adapter.translator;
 
 public interface Translator {
     
-    public String startGame();
+    String startGame();
     
-    public String endGame();
+    String endGame();
     
-    public String translateMoveFromHGomoku(String lastMove);
+    String translateMoveFromHGomoku(String lastMove);
     
-    public String translateMoveToHGomoku(String lastMove);
+    String translateMoveToHGomoku(String lastMove);
     
-    public boolean isMoveProvided(String line);
+    boolean isMoveProvided(String line);
 }
