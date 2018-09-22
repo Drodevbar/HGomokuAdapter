@@ -24,6 +24,12 @@ public class ZhixiangliTranslator implements Translator {
 
     @Override
     public String startGame() {
+        if (side.equals("NEXT_BLACK")) {
+            return String.format(
+                    "{\"command\":\"NEXT_BLACK\",\"rows\":%d,\"columns\":%d,\"chessboard\":\"\"}" + EOL,
+                    boardWidth, boardHeight
+            );
+        }
         return "";
     }
 
