@@ -1,4 +1,4 @@
-package adapter.translator;
+package adapter.agent;
 
 public interface Translator {
     
@@ -11,4 +11,6 @@ public interface Translator {
     String translateMoveToHGomoku(String lastMove);
     
     boolean isMoveProvided(String line);
+
+    String protocolType();
 }

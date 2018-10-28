@@ -58,11 +58,14 @@ public class AgentParams {
     }
     
     private static String buildCommand(String[] args) {
+        if (args.length == 0) {
+            return "";
+        }
+
         StringBuilder commandBuilder = new StringBuilder();
         for (String arg : args) {
             commandBuilder.append(arg).append(" ");
         }
-        
         return commandBuilder.toString();
     }
     
@@ -74,7 +77,7 @@ public class AgentParams {
     } 
     
     private static void validateArgsLength(int length) {
-        if (length < 8) {
+        if (length < 7) {
             throw new RuntimeException("Please provide required parameters.");
         }
     }

@@ -1,6 +1,7 @@
-package adapter.translator;
+package adapter.agent.translator;
 
 import adapter.agent.AgentParams;
+import adapter.agent.Translator;
 
 public class TranslatorFactory {
     
@@ -11,7 +12,7 @@ public class TranslatorFactory {
             case "zhixiangli":
                 return new ZhixiangliTranslator(AgentParams.isStarting(), AgentParams.getBoardWidth(), AgentParams.getBoardHeight());
             default:
-                throw new IllegalArgumentException("Given translator does not exist.");
+                throw new IllegalArgumentException("Translator for given agent doesn't exist");
         }
     }
 }

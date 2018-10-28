@@ -1,4 +1,4 @@
-package adapter.translator;
+package adapter.agent.translator;
 
 import junitparams.JUnitParamsRunner;
 import junitparams.Parameters;

@@ -1,4 +1,6 @@
-package adapter.translator;
+package adapter.agent.translator;
+
+import adapter.agent.Translator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,6 +72,11 @@ public class ZhixiangliTranslator implements Translator {
     @Override
     public boolean isMoveProvided(String line) {
         return line.contains("rowIndex") && line.contains("columnIndex");
+    }
+
+    @Override
+    public String protocolType() {
+        return "adapter.agent.protocol.Process";
     }
 
     private void addMoveToBuffer(int row, int col, String sideShortcut) {

@@ -1,4 +1,6 @@
-package adapter.translator;
+package adapter.agent.translator;
+
+import adapter.agent.Translator;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -58,5 +60,9 @@ public class TrokaTranslator implements Translator {
     public boolean isMoveProvided(String line) {
         return line.contains("move " + side);
     }
-    
+
+    @Override
+    public String protocolType() {
+        return "adapter.agent.protocol.Process";
+    }
 }

@@ -1,9 +1,8 @@
 package adapter;
 
-import adapter.agent.Agent;
 import adapter.agent.AgentParams;
-import adapter.translator.TranslatorFactory;
-import adapter.translator.Translator;
+import adapter.agent.translator.TranslatorFactory;
+import adapter.agent.Translator;
 
 public class App {
 
