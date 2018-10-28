@@ -11,6 +11,8 @@ public class TranslatorFactory {
                 return new TrokaTranslator(AgentParams.isStarting(), AgentParams.getBoardHeight());
             case "zhixiangli":
                 return new ZhixiangliTranslator(AgentParams.isStarting(), AgentParams.getBoardWidth(), AgentParams.getBoardHeight());
+            case "blupig":
+                return new BlupigTranslator(AgentParams.isStarting(), AgentParams.getBoardHeight());
             default:
                 throw new IllegalArgumentException("Translator for given agent doesn't exist");
         }
