@@ -1,6 +1,8 @@
 package adapter.agent.translator;
 
 import adapter.agent.Translator;
+import adapter.util.Converter;
+
 import org.json.JSONObject;
 
 public class BlupigTranslator implements Translator {
@@ -74,10 +76,6 @@ public class BlupigTranslator implements Translator {
     }
 
     private String getBoardAsString() {
-        StringBuilder result = new StringBuilder();
-        for (int el : board) {
-            result.append(el);
-        }
-        return result.toString();
+        return Converter.toStringfromIntArray(board);
     }
 }
