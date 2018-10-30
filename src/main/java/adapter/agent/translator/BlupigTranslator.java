@@ -6,25 +6,29 @@ import adapter.util.Converter;
 import org.json.JSONObject;
 
 public class BlupigTranslator implements Translator {
-
-    private static final int CODE_MIN_LETTER_ASCII = 97;
+    
     private static final int PLAYER_ONE = 1;
     private static final int PLAYER_TWO = 2;
-
+    private static final int FIRST_MOVE_INDEX = 180;
+    private static final int CODE_MIN_LETTER_ASCII = 97;
+    
     private final int playerNumber;
     private final int opponentNumber;
     private final int boardHeight;
-    private int[] board;
+    private final int[] board;
 
-    BlupigTranslator(boolean starting, int boardHeight) {
+    BlupigTranslator(boolean starting, int boardWidth, int boardHeight) {
         playerNumber = starting ? PLAYER_ONE : PLAYER_TWO;
         opponentNumber = starting ? PLAYER_TWO : PLAYER_ONE;
+        board = new int[boardWidth * boardHeight];
         this.boardHeight = boardHeight;
-        initializeBoard();
     }
 
     @Override
     public String startGame() {
+        if (playerNumber == PLAYER_ONE) {
+            board[FIRST_MOVE_INDEX] = PLAYER_ONE;
+        }
         return "";
     }
 
@@ -66,13 +70,6 @@ public class BlupigTranslator implements Translator {
     @Override
     public String protocolType() {
         return "adapter.agent.protocol.BlupigCommand";
-    }
-
-    private void initializeBoard() {
-        board = new int[19 * 19];
-        if (playerNumber == PLAYER_ONE) {
-            board[180] = PLAYER_ONE;
-        }
     }
 
     private String getBoardAsString() {

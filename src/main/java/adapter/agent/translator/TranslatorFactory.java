@@ -12,7 +12,7 @@ public class TranslatorFactory {
             case "zhixiangli":
                 return new ZhixiangliTranslator(AgentParams.isStarting(), AgentParams.getBoardWidth(), AgentParams.getBoardHeight());
             case "blupig":
-                return new BlupigTranslator(AgentParams.isStarting(), AgentParams.getBoardHeight());
+                return new BlupigTranslator(AgentParams.isStarting(), AgentParams.getBoardWidth(), AgentParams.getBoardHeight());
             default:
                 throw new IllegalArgumentException("Translator for given agent doesn't exist");
         }

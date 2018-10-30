@@ -14,14 +14,14 @@ public class BlupigTranslatorTest {
 
     private static final int BOARD_WIDTH = 19;
     private static final int BOARD_HEIGHT = 19;
-    private static final int PLAYER_NUMBER = 2;
-    private static final int OPPONENT_NUMBER = 1;
+    private static final int PLAYER_NUMBER = 1;
+    private static final int OPPONENT_NUMBER = 2;
     
     private BlupigTranslator blupigTranslator;
     
     @Before
     public void setUp() {
-        blupigTranslator = new BlupigTranslator(false, BOARD_HEIGHT);
+        blupigTranslator = new BlupigTranslator(true, BOARD_WIDTH, BOARD_HEIGHT);
     }
     
     @Test

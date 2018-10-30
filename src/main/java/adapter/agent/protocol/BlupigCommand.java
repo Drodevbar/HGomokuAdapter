@@ -20,6 +20,7 @@ public class BlupigCommand extends Protocol {
 
     @Override
     public void startGame() {
+        translator.startGame();
     }
 
     @Override
