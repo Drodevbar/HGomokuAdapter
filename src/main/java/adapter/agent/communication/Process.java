@@ -1,12 +1,12 @@
-package adapter.agent.protocol;
+package adapter.agent.communication;
 
 import adapter.agent.AgentParams;
-import adapter.agent.Protocol;
+import adapter.agent.CommunicationHandler;
 import adapter.agent.Translator;
 
 import java.io.*;
 
-public class Process extends Protocol {
+public class Process extends CommunicationHandler {
 
     private final java.lang.Process processManager;
     private final BufferedWriter toProcess;

@@ -69,7 +69,7 @@ public class BlupigTranslator implements Translator {
 
     @Override
     public String protocolType() {
-        return "adapter.agent.protocol.BlupigCommand";
+        return "adapter.agent.communication.BlupigCommand";
     }
 
     private String getBoardAsString() {

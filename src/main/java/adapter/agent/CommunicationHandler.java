@@ -2,11 +2,11 @@ package adapter.agent;
 
 import java.io.Closeable;
 
-public abstract class Protocol implements Closeable {
+public abstract class CommunicationHandler implements Closeable {
 
     protected final Translator translator;
 
-    public Protocol(Translator translator) {
+    public CommunicationHandler(Translator translator) {
         this.translator = translator;
     }
 

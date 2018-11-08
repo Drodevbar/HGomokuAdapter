@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(JUnitParamsRunner.class)
-public class ZhixiangliTranslatorTest
-{
+public class ZhixiangliTranslatorTest {
+
     private static final int BOARD_WIDTH = 15;
     private static final int BOARD_HEIGHT = 15;
 

@@ -76,7 +76,7 @@ public class ZhixiangliTranslator implements Translator {
 
     @Override
     public String protocolType() {
-        return "adapter.agent.protocol.Process";
+        return "adapter.agent.communication.Process";
     }
 
     private void addMoveToBuffer(int row, int col, String sideShortcut) {

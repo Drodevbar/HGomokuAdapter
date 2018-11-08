@@ -2,12 +2,12 @@ package adapter.agent.kind;
 
 import adapter.Agent;
 import adapter.agent.AgentParams;
-import adapter.agent.Protocol;
+import adapter.agent.CommunicationHandler;
 
 public class FollowingAgent extends Agent {
 
-    public FollowingAgent(Protocol protocol) {
-        super(protocol);
+    public FollowingAgent(CommunicationHandler communicationHandler) {
+        super(communicationHandler);
     }
     
     @Override

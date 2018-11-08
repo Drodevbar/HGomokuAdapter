@@ -63,6 +63,6 @@ public class TrokaTranslator implements Translator {
 
     @Override
     public String protocolType() {
-        return "adapter.agent.protocol.Process";
+        return "adapter.agent.communication.Process";
     }
 }

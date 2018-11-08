@@ -1,14 +1,14 @@
-package adapter.agent.protocol;
+package adapter.agent.communication;
 
 import adapter.agent.AgentParams;
-import adapter.agent.Protocol;
+import adapter.agent.CommunicationHandler;
 import adapter.agent.Translator;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.lang.Process;
 
-public class BlupigCommand extends Protocol {
+public class BlupigCommand extends CommunicationHandler {
 
     private final String command;
     private String lastCommandParams;
@@ -38,7 +38,7 @@ public class BlupigCommand extends Protocol {
             line = stdInput.readLine();
         }
 
-         return translator.translateMoveToHGomoku(response.toString());
+        return translator.translateMoveToHGomoku(response.toString());
     }
 
     @Override
