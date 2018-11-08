@@ -1,7 +1,7 @@
 package adapter.agent;
 
 public interface Translator {
-    
+
     String startGame();
     
     String endGame();
@@ -12,5 +12,5 @@ public interface Translator {
     
     boolean isMoveProvided(String line);
 
-    String protocolType();
+    String getCommunicationHandler();
 }

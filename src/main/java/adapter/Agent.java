@@ -16,7 +16,7 @@ abstract public class Agent implements Closeable {
     
     public static Agent build(Translator translator) throws Exception {
         CommunicationHandler communicationHandler = (CommunicationHandler) Class
-                .forName(translator.protocolType())
+                .forName(translator.getCommunicationHandler())
                 .getConstructor(Translator.class)
                 .newInstance(translator);
 
