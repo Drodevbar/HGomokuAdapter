@@ -17,7 +17,7 @@ public class BlupigTranslator implements Translator {
     private final int boardHeight;
     private final int[] board;
 
-    BlupigTranslator(boolean starting, int boardWidth, int boardHeight) {
+    public BlupigTranslator(boolean starting, int boardWidth, int boardHeight) {
         playerNumber = starting ? PLAYER_ONE : PLAYER_TWO;
         opponentNumber = starting ? PLAYER_TWO : PLAYER_ONE;
         board = new int[boardWidth * boardHeight];

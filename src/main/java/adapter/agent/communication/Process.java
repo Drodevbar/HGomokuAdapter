@@ -32,6 +32,10 @@ public class Process extends CommunicationHandler {
 
     @Override
     public String doTurn() throws IOException {
+        if (translator.isMoveProvided("")) {
+            return translator.translateMoveToHGomoku("");
+        }
+
         String line = fromProcess.readLine();
         while (!translator.isMoveProvided(line)) {
             line = fromProcess.readLine();

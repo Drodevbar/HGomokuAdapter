@@ -13,7 +13,7 @@ public class StartingAgent extends Agent {
     @Override
     public void run() throws Exception {
         doTurn(AgentParams.getFirstTurnPower());
-        handleHGomokuTurn(AgentParams.getFirstTurnPower());
+        handleHGomokuTurn(AgentParams.getTurnPower());
         while (true) {
             doTurn(AgentParams.getTurnPower());
             handleHGomokuTurn(AgentParams.getTurnPower());

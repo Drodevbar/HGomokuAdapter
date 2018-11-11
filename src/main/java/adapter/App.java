@@ -1,7 +1,7 @@
 package adapter;
 
 import adapter.agent.AgentParams;
-import adapter.agent.translator.TranslatorFactory;
+import adapter.agent.TranslatorFactory;
 import adapter.agent.Translator;
 
 public class App {

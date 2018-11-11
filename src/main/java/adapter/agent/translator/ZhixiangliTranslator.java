@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 
 public class ZhixiangliTranslator implements Translator {
 
-    private static final String EOL = "\n";
-    private static final int CODE_MIN_LETTER_ASCII = 97;
     private static final Pattern MOVE_PATTERN = Pattern.compile("\\{\"rowIndex\":(\\d+),\"columnIndex\":(\\d+)\\}");
 
     private final String side;
@@ -17,7 +15,7 @@ public class ZhixiangliTranslator implements Translator {
     private final int boardHeight;
     private final StringBuffer movesBuffer = new StringBuffer();
 
-    ZhixiangliTranslator(boolean starting, int boardWidth, int boardHeight) {
+    public ZhixiangliTranslator(boolean starting, int boardWidth, int boardHeight) {
         side = starting ? "NEXT_BLACK" : "NEXT_WHITE";
         sideShortcut = starting ? "B" : "W";
         this.boardWidth = boardWidth;

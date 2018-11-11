@@ -7,14 +7,12 @@ import java.util.regex.Pattern;
 
 public class TrokaTranslator implements Translator {
 
-    private static final String EOL = "\n";
-    private static final int CODE_MIN_LETTER_ASCII = 97;
     private static final Pattern MOVE_PATTERN = Pattern.compile("move (?:black|white) (\\d+) (\\d+)");
 
     private final String side;
     private final int boardHeight;
 
-    TrokaTranslator(boolean starting, int boardHeight) {
+    public TrokaTranslator(boolean starting, int boardHeight) {
         this.side = starting ? "black" : "white";
         this.boardHeight = boardHeight;
     }
