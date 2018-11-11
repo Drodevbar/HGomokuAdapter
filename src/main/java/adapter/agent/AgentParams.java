@@ -5,48 +5,18 @@ import java.util.Arrays;
 public class AgentParams {
 
     private static String translator;
-    private static int boardWidth;
-    private static int boardHeight;
-    private static int kToWin;
-    private static int turnPower;
-    private static int firstTurnPower;
     private static boolean starting;
     private static String command;
     
     public static void load(String[] args) {
         validateArgsLength(args.length);
         translator = args[0];
-        boardWidth = Integer.parseInt(args[1]);
-        boardHeight = Integer.parseInt(args[2]);
-        kToWin = Integer.parseInt(args[3]);
-        turnPower = Integer.parseInt(args[4]);
-        firstTurnPower = Integer.parseInt(args[5]);
-        starting = convertToBoolean(args[6]);
-        command = buildCommand(Arrays.copyOfRange(args, 7, args.length));
+        starting = convertToBoolean(args[1]);
+        command = buildCommand(Arrays.copyOfRange(args, 2, args.length));
     }
     
     public static String getTranslator() {
         return translator;
-    }
-    
-    public static int getBoardWidth() {
-        return boardWidth;
-    }
-    
-    public static int getBoardHeight() {
-        return boardHeight;
-    }
-    
-    public static int getKToWin() {
-        return kToWin;
-    }
-    
-    public static int getTurnPower() {
-        return turnPower;
-    }
-    
-    public static int getFirstTurnPower() {
-        return firstTurnPower;
     }
     
     public static boolean isStarting() {
@@ -73,7 +43,7 @@ public class AgentParams {
     } 
     
     private static void validateArgsLength(int length) {
-        if (length < 8) {
+        if (length < 3) {
             throw new RuntimeException("Please provide required parameters.");
         }
     }

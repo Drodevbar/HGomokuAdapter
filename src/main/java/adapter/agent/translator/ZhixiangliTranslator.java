@@ -7,19 +7,17 @@ import java.util.regex.Pattern;
 
 public class ZhixiangliTranslator implements Translator {
 
+    private static final int BOARD_WIDTH = 15;
+    private static final int BOARD_HEIGHT = 15;
     private static final Pattern MOVE_PATTERN = Pattern.compile("\\{\"rowIndex\":(\\d+),\"columnIndex\":(\\d+)\\}");
 
     private final String side;
     private final String sideShortcut;
-    private final int boardWidth;
-    private final int boardHeight;
     private final StringBuffer movesBuffer = new StringBuffer();
 
-    public ZhixiangliTranslator(boolean starting, int boardWidth, int boardHeight) {
+    public ZhixiangliTranslator(boolean starting) {
         side = starting ? "NEXT_BLACK" : "NEXT_WHITE";
         sideShortcut = starting ? "B" : "W";
-        this.boardWidth = boardWidth;
-        this.boardHeight = boardHeight;
     }
 
     @Override
@@ -27,7 +25,7 @@ public class ZhixiangliTranslator implements Translator {
         if (side.equals("NEXT_BLACK")) {
             return String.format(
                     "{\"command\":\"NEXT_BLACK\",\"rows\":%d,\"columns\":%d,\"chessboard\":\"\"}" + EOL,
-                    boardWidth, boardHeight
+                    BOARD_WIDTH, BOARD_HEIGHT
             );
         }
         return "";
@@ -41,13 +39,13 @@ public class ZhixiangliTranslator implements Translator {
     @Override
     public String translateMoveFromHGomoku(String lastMove) {
         int column = (lastMove.substring(0, 1)).codePointAt(0) - CODE_MIN_LETTER_ASCII;
-        int row = boardHeight - Integer.parseInt(lastMove.substring(1));
+        int row = BOARD_HEIGHT - Integer.parseInt(lastMove.substring(1));
 
         addMoveToBuffer(row, column, getOppositeSideShortcut());
 
         return String.format(
                 "{\"command\":\"%s\",\"rows\":%d,\"columns\":%d,\"chessboard\":\"%s\"}" + EOL,
-                side, boardWidth, boardHeight, movesBuffer.toString()
+                side, BOARD_WIDTH, BOARD_HEIGHT, movesBuffer.toString()
         );
     }
 
@@ -62,7 +60,7 @@ public class ZhixiangliTranslator implements Translator {
         addMoveToBuffer(row, column, sideShortcut);
 
         String x = Character.toString((char)('a' + column));
-        String y = Integer.toString(boardHeight - row);
+        String y = Integer.toString(BOARD_HEIGHT - row);
 
         return x + y;
     }
@@ -75,6 +73,16 @@ public class ZhixiangliTranslator implements Translator {
     @Override
     public String getCommunicationHandler() {
         return "adapter.agent.communication.Process";
+    }
+
+    @Override
+    public int getTurnPower() {
+        return 1;
+    }
+
+    @Override
+    public int getFirstTurnPower() {
+        return 1;
     }
 
     private void addMoveToBuffer(int row, int col, String sideShortcut) {

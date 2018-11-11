@@ -12,11 +12,11 @@ public class FollowingAgent extends Agent {
     
     @Override
     public void run() throws Exception {
-        handleHGomokuTurn(AgentParams.getFirstTurnPower());
-        doTurn(AgentParams.getTurnPower());
+        handleHGomokuTurn(communicationHandler.getFirstTurnPower());
+        doTurn(communicationHandler.getTurnPower());
         while (true) {
-            handleHGomokuTurn(AgentParams.getTurnPower());
-            doTurn(AgentParams.getTurnPower());
+            handleHGomokuTurn(communicationHandler.getTurnPower());
+            doTurn(communicationHandler.getTurnPower());
         }
     }
 }

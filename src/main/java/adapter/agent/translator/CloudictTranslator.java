@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class CloudictTranslator implements Translator {
 
-    private static final int ALPHA_BETA_DEPTH = 2;
+    private static final int ALPHA_BETA_DEPTH = 4;
     private static final Pattern MOVE_PATTERN = Pattern.compile("move ([A-S])([A-S])([A-S])?([A-S])?");
 
     private final String side;
@@ -86,6 +86,16 @@ public class CloudictTranslator implements Translator {
     @Override
     public String getCommunicationHandler() {
         return "adapter.agent.communication.Process";
+    }
+
+    @Override
+    public int getTurnPower() {
+        return 2;
+    }
+
+    @Override
+    public int getFirstTurnPower() {
+        return 1;
     }
 
     private boolean isBufferNotEmpty(String[] buffer) {

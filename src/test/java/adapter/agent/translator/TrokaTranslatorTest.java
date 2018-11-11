@@ -11,13 +11,11 @@ import static org.junit.Assert.*;
 @RunWith(JUnitParamsRunner.class)
 public class TrokaTranslatorTest {
 
-    private static final int BOARD_HEIGHT = 15;
-    
     private TrokaTranslator trokaTranslator;
     
     @Before
     public void setUp() {
-        trokaTranslator = new TrokaTranslator(true, BOARD_HEIGHT);
+        trokaTranslator = new TrokaTranslator(true);
     }
     
     @Test

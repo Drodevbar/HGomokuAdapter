@@ -21,7 +21,7 @@ public class BlupigTranslatorTest {
     
     @Before
     public void setUp() {
-        blupigTranslator = new BlupigTranslator(true, BOARD_WIDTH, BOARD_HEIGHT);
+        blupigTranslator = new BlupigTranslator(true);
     }
     
     @Test

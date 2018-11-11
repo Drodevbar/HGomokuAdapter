@@ -9,19 +9,18 @@ public class BlupigTranslator implements Translator {
     
     private static final int PLAYER_ONE = 1;
     private static final int PLAYER_TWO = 2;
+    private static final int BOARD_WIDTH = 19;
+    private static final int BOARD_HEIGHT = 19;
     private static final int FIRST_MOVE_INDEX = 180;
-    private static final int CODE_MIN_LETTER_ASCII = 97;
     
     private final int playerNumber;
     private final int opponentNumber;
-    private final int boardHeight;
     private final int[] board;
 
-    public BlupigTranslator(boolean starting, int boardWidth, int boardHeight) {
+    public BlupigTranslator(boolean starting) {
         playerNumber = starting ? PLAYER_ONE : PLAYER_TWO;
         opponentNumber = starting ? PLAYER_TWO : PLAYER_ONE;
-        board = new int[boardWidth * boardHeight];
-        this.boardHeight = boardHeight;
+        board = new int[BOARD_WIDTH * BOARD_HEIGHT];
     }
 
     @Override
@@ -40,9 +39,9 @@ public class BlupigTranslator implements Translator {
     @Override
     public String translateMoveFromHGomoku(String lastMove) {
         int x = (lastMove.substring(0, 1)).codePointAt(0) - CODE_MIN_LETTER_ASCII;
-        int y = boardHeight - Integer.parseInt(lastMove.substring(1));
+        int y = BOARD_HEIGHT - Integer.parseInt(lastMove.substring(1));
 
-        board[boardHeight * y + x] = opponentNumber;
+        board[BOARD_HEIGHT * y + x] = opponentNumber;
 
         return " -s " + getBoardAsString() + " -p " + playerNumber;
     }
@@ -54,10 +53,10 @@ public class BlupigTranslator implements Translator {
         int moveC = Integer.parseInt(response.getJSONObject("result").getString("move_c"));
         int moveR = Integer.parseInt(response.getJSONObject("result").getString("move_r"));
 
-        board[boardHeight * moveR + moveC] = playerNumber;
+        board[BOARD_HEIGHT * moveR + moveC] = playerNumber;
 
         String x = Character.toString((char)('a' + moveC));
-        String y = Integer.toString(boardHeight - moveR);
+        String y = Integer.toString(BOARD_HEIGHT - moveR);
 
         return x + y;
     }
@@ -70,6 +69,16 @@ public class BlupigTranslator implements Translator {
     @Override
     public String getCommunicationHandler() {
         return "adapter.agent.communication.BlupigCommand";
+    }
+
+    @Override
+    public int getTurnPower() {
+        return 1;
+    }
+
+    @Override
+    public int getFirstTurnPower() {
+        return 1;
     }
 
     private String getBoardAsString() {

@@ -18,7 +18,7 @@ public class ZhixiangliTranslatorTest {
 
     @Before
     public void setUp() {
-        zhixiangliTranslator = new ZhixiangliTranslator(true, BOARD_WIDTH, BOARD_HEIGHT);
+        zhixiangliTranslator = new ZhixiangliTranslator(true);
     }
 
     @Test

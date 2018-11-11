@@ -11,8 +11,8 @@ import java.util.Scanner;
 
 abstract public class Agent implements Closeable {
 
-    private final CommunicationHandler communicationHandler;
     private final Scanner scanner;
+    protected final CommunicationHandler communicationHandler;
     
     public static Agent build(Translator translator) throws Exception {
         CommunicationHandler communicationHandler = (CommunicationHandler) Class

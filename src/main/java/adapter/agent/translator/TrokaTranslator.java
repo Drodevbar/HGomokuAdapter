@@ -7,14 +7,13 @@ import java.util.regex.Pattern;
 
 public class TrokaTranslator implements Translator {
 
+    private static final int BOARD_HEIGHT = 15;
     private static final Pattern MOVE_PATTERN = Pattern.compile("move (?:black|white) (\\d+) (\\d+)");
 
     private final String side;
-    private final int boardHeight;
 
-    public TrokaTranslator(boolean starting, int boardHeight) {
+    public TrokaTranslator(boolean starting) {
         this.side = starting ? "black" : "white";
-        this.boardHeight = boardHeight;
     }
 
     @Override
@@ -34,7 +33,7 @@ public class TrokaTranslator implements Translator {
     @Override
     public String translateMoveFromHGomoku(String lastMove) {
         int x = (lastMove.substring(0, 1)).codePointAt(0) - CODE_MIN_LETTER_ASCII + 1;
-        int y = boardHeight - Integer.parseInt(lastMove.substring(1)) + 1;
+        int y = BOARD_HEIGHT - Integer.parseInt(lastMove.substring(1)) + 1;
         
         return String.format("makemove %d %d" + EOL, x, y);
     }
@@ -48,7 +47,7 @@ public class TrokaTranslator implements Translator {
                (char)('a' + Integer.parseInt(matcher.group(1)) - 1)
         );
         String y = Integer.toString(
-                boardHeight - Integer.parseInt(matcher.group(2)) + 1
+                BOARD_HEIGHT - Integer.parseInt(matcher.group(2)) + 1
         );
         
         return x + y;
@@ -62,5 +61,15 @@ public class TrokaTranslator implements Translator {
     @Override
     public String getCommunicationHandler() {
         return "adapter.agent.communication.Process";
+    }
+
+    @Override
+    public int getTurnPower() {
+        return 1;
+    }
+
+    @Override
+    public int getFirstTurnPower() {
+        return 1;
     }
 }

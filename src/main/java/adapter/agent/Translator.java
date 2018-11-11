@@ -17,4 +17,8 @@ public interface Translator {
     boolean isMoveProvided(String line);
 
     String getCommunicationHandler();
+
+    int getTurnPower();
+
+    int getFirstTurnPower();
 }

@@ -12,11 +12,11 @@ public class StartingAgent extends Agent {
         
     @Override
     public void run() throws Exception {
-        doTurn(AgentParams.getFirstTurnPower());
-        handleHGomokuTurn(AgentParams.getTurnPower());
+        doTurn(communicationHandler.getFirstTurnPower());
+        handleHGomokuTurn(communicationHandler.getTurnPower());
         while (true) {
-            doTurn(AgentParams.getTurnPower());
-            handleHGomokuTurn(AgentParams.getTurnPower());
+            doTurn(communicationHandler.getTurnPower());
+            handleHGomokuTurn(communicationHandler.getTurnPower());
         }
     }   
 }
