@@ -12,7 +12,8 @@ public class BlupigTranslator implements Translator {
     private static final int BOARD_WIDTH = 19;
     private static final int BOARD_HEIGHT = 19;
     private static final int ALPHA_BETA_DEPTH = 6;
-    private static final int FIRST_MOVE_INDEX = 180;
+    private static final int FIRST_TURN_MOVE_INDEX = 180;
+    private static final String FIRST_TURN_MOVE_COORDS = "j10";
     
     private final int playerNumber;
     private final int opponentNumber;
@@ -27,7 +28,7 @@ public class BlupigTranslator implements Translator {
     @Override
     public String startGame() {
         if (playerNumber == PLAYER_ONE) {
-            board[FIRST_MOVE_INDEX] = PLAYER_ONE;
+            board[FIRST_TURN_MOVE_INDEX] = PLAYER_ONE;
         }
         return "";
     }
@@ -50,6 +51,10 @@ public class BlupigTranslator implements Translator {
     @Override
     public String translateMoveToHGomoku(String lastMove) {
         JSONObject response = new JSONObject(lastMove);
+
+        if (isFirstTurn(response)) {
+            return FIRST_TURN_MOVE_COORDS;
+        }
 
         int moveC = Integer.parseInt(response.getJSONObject("result").getString("move_c"));
         int moveR = Integer.parseInt(response.getJSONObject("result").getString("move_r"));
@@ -84,5 +89,9 @@ public class BlupigTranslator implements Translator {
 
     private String getBoardAsString() {
         return Converter.toStringfromIntArray(board);
+    }
+
+    private boolean isFirstTurn(JSONObject response) {
+        return response.isNull("result");
     }
 }
