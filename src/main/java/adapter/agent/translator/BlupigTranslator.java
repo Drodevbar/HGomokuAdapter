@@ -11,6 +11,7 @@ public class BlupigTranslator implements Translator {
     private static final int PLAYER_TWO = 2;
     private static final int BOARD_WIDTH = 19;
     private static final int BOARD_HEIGHT = 19;
+    private static final int ALPHA_BETA_DEPTH = 6;
     private static final int FIRST_MOVE_INDEX = 180;
     
     private final int playerNumber;
@@ -43,7 +44,7 @@ public class BlupigTranslator implements Translator {
 
         board[BOARD_HEIGHT * y + x] = opponentNumber;
 
-        return " -s " + getBoardAsString() + " -p " + playerNumber;
+        return " -s " + getBoardAsString() + " -p " + playerNumber + " -d " + ALPHA_BETA_DEPTH;
     }
 
     @Override

@@ -31,7 +31,7 @@ public class BlupigTranslatorTest {
             "j1, 351", "o4, 299", "l13, 125"
     })
     public void shouldTranslateFromHGomokuToBlupig(String hGomokuMove, int opponentLastMovePosition) {
-        assertEquals(getBlupigResponseCommand(opponentLastMovePosition), blupigTranslator.translateMoveFromHGomoku(hGomokuMove));
+        assertTrue(blupigTranslator.translateMoveFromHGomoku(hGomokuMove).contains(getBlupigResponseCommand(opponentLastMovePosition)));
     }
     
     @Test
