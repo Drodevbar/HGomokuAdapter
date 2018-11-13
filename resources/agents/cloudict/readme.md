@@ -1,3 +1,9 @@
+## Authors: Hao Cui, Liang Li, Ruijian Wang, Siran Lin
+
+## Source: https://github.com/lang010/cloudict
+
+### Installation
+
 If the connect6-19x19 exacutable won't work in your environment, create the exec by yourself:
 
 ```bash
@@ -7,4 +13,3 @@ make
 ```
 
 connect6 executable will be inside cloudict folder (gameEngine)
-

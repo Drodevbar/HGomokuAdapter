@@ -1,3 +1,9 @@
+## Author: Yunzhu Li (yunzhu-li)
+
+## Source: https://github.com/yunzhu-li/blupig-gomoku
+
+### Installation
+
 If the gomoku19x19 exacutable won't work in your environment, create the exec by yourself:
 
 ```bash
